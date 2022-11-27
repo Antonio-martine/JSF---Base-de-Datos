@@ -6,6 +6,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import models.Computadoras;
 import models.Usuarios;
 
 public class ConexionDao {
@@ -46,4 +49,65 @@ public class ConexionDao {
         }
         desconectar(); 
     }
+    
+    /*Insetar nuevo dispositivo*/
+    public void Insertar_computadora(Computadoras computadora){
+        conectar();
+        String sql ="insert into computadora (tipo,marca,modelo,descripcion,costo) values ('"+computadora.getTipo()+"','"+computadora.getMarca()+"','"+computadora.getModelo()+"','"
+                +computadora.getDescripcion()+"','"+computadora.getCosto()+"')";
+        try {
+            stm.executeUpdate(sql);
+            System.out.println("Envio de datos correcto... ");
+        } catch (SQLException err) {
+            System.out.println("Error al envisar los datos, revisar conexion (insertar_usuario)... ");
+        }
+        desconectar(); 
+    }
+    
+    /*Mostrar dispositivos*/
+    public List<Computadoras> getComputadoras() throws SQLException{
+        conectar();
+        String sql = "select * from computadora order by idComputadora";
+        rs = stm.executeQuery(sql);
+        List<Computadoras> listaComputadoras = new ArrayList<Computadoras>();
+        while(rs.next()){
+            Computadoras computadora = new Computadoras();
+            computadora.setIdComputadora(rs.getInt("idComputadora"));
+            computadora.setTipo(rs.getString("tipo"));
+            computadora.setMarca(rs.getString("marca"));
+            computadora.setModelo(rs.getString("modelo"));
+            computadora.setDescripcion(rs.getString("descripcion"));
+            computadora.setCosto(rs.getDouble("costo"));
+            listaComputadoras.add(computadora);
+        }
+        desconectar();
+        return listaComputadoras;
+    }
+    
+    public void modificar_computadora(Computadoras computadora){
+        conectar();
+        String sql="update computadora set tipo='"+computadora.getTipo()+"',marca= '"+computadora.getMarca()+"',"
+                + "modelo= '"+computadora.getModelo()+"',descripcion= '"+computadora.getDescripcion()+"',costo= '"
+                +computadora.getCosto()+"' where (idComputadora ='"+computadora.getIdComputadora()+"')";
+        try {
+            stm.executeUpdate(sql);
+            System.out.println("Datos modeficados correctamente");
+        } catch (SQLException err) {
+            System.out.println("Error al modificar el dato: "+err);
+        }
+    }
+    
+    public void elimidar_computadora(Computadoras computadora){
+        conectar();
+        String sql = "delete from computadora where idComputadora= "+computadora.getIdComputadora();
+        try {
+            stm.executeUpdate(sql);
+            System.out.println("Dato eliminado correctamente");
+        } catch (SQLException err) {
+            System.out.println("Datos no eliminado: "+err);
+        }
+        desconectar();
+    }
+    
+    
 }

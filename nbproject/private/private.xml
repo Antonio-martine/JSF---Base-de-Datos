@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jesus/OneDrive/Documentos/NetBeansProjects/TercerParcial/EjercicioFinal/src/java/dao/ConexionDao.java</file>
-            <file>file:/C:/Users/jesus/OneDrive/Documentos/NetBeansProjects/TercerParcial/EjercicioFinal/web/registro.xhtml</file>
-            <file>file:/C:/Users/jesus/OneDrive/Documentos/NetBeansProjects/TercerParcial/EjercicioFinal/src/java/models/ValidadorLetras.java</file>
-            <file>file:/C:/Users/jesus/OneDrive/Documentos/NetBeansProjects/TercerParcial/EjercicioFinal/src/java/bean/UsuarioBeans.java</file>
-            <file>file:/C:/Users/jesus/OneDrive/Documentos/NetBeansProjects/TercerParcial/EjercicioFinal/src/java/models/ValidadorEmail.java</file>
-            <file>file:/C:/Users/jesus/OneDrive/Documentos/NetBeansProjects/TercerParcial/EjercicioFinal/web/index.xhtml</file>
+            <file>file:/C:/EjercicioFinal/web/index.xhtml</file>
+            <file>file:/C:/EjercicioFinal/src/java/dao/ConexionDao.java</file>
+            <file>file:/C:/EjercicioFinal/src/java/bean/ComputadoraBeans.java</file>
+            <file>file:/C:/EjercicioFinal/src/java/models/Computadoras.java</file>
+            <file>file:/C:/EjercicioFinal/web/registro.xhtml</file>
+            <file>file:/C:/EjercicioFinal/src/java/servlet/ConexionComputadora.java</file>
+            <file>file:/C:/EjercicioFinal/web/home.xhtml</file>
         </group>
     </open-files>
 </project-private>
