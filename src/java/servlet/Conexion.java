@@ -21,15 +21,6 @@ public class Conexion extends HttpServlet {
                     out.print("Probando conexion... ");
                     ConexionDao conexion = new ConexionDao();
                     conexion.conectar();
-                    out.print("Envio de datos... ");
-                    Usuarios usuario = new Usuarios();
-                    usuario.setNombre("Antonio");
-                    usuario.setApellido("Martinez");
-                    usuario.setSexo("Hombre");
-                    usuario.setEmail("jesus07antonio03@gmail.com");
-                    usuario.setContraseña("antonio123");
-                    conexion.Insertar_usuario(usuario);
-                    out.print("Envio de datos correctamente ... ");
                     out.print("Desconectando... ");
                     conexion.desconectar();
                     out.print("Desconectado de Mysql... ");

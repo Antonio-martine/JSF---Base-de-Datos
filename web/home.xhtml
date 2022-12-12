@@ -7,31 +7,32 @@
     <h:head>
         <title>Facelet Title</title>
     </h:head>
+    <center>
     <h:body>
-        <h1>Bienvenido: </h1>
+        <h1>Bienvenido a la biblioteca de cine: </h1>
         <h:form id="formNuevoDispositivo">
             <p:panelGrid columns="2">
-                <p:outputLabel value="Marca: "/>
+                <p:outputLabel value="Pelicula "/>
                 <p:inputText value="#{computadoraBeans.computadora.marca}" required="true">
                     <f:validator validatorId="models.ValidadorLetras"/>
                 </p:inputText>
-                <p:outputLabel value="Modelo: "/>
+                <p:outputLabel value="Genero "/>
                 <p:inputText value="#{computadoraBeans.computadora.modelo}" required="true" />
-                <p:outputLabel value="TIpo: "/>
+                <p:outputLabel value="Doblaje "/>
                 <p:selectOneRadio value="#{computadoraBeans.computadora.tipo}" required="true">
-                    <f:selectItem itemValue="pc" itemLabel="PC"/>
-                    <f:selectItem itemValue="laptop" itemLabel="Laptop"/>
+                    <f:selectItem itemValue="Espanol" itemLabel="Espanol"/>
+                    <f:selectItem itemValue="Ingles" itemLabel="Ingles"/>
                 </p:selectOneRadio>
-                <p:outputLabel value="Descripcion: "/>
+                <p:outputLabel value="Director "/>
                 <p:inputTextarea cols="30" rows="10" value="#{computadoraBeans.computadora.descripcion}" required="true" />
-                <p:outputLabel value="Costo "/>
+                <p:outputLabel value="Costo de boleto "/>
                 <p:inputText value="#{computadoraBeans.computadora.costo}" required="true"/>
             </p:panelGrid>
             <p:commandButton value="Registrar" action="#{computadoraBeans.insertar()}" update="formComputadora, formNuevoDispositivo"/>
         </h:form>
         
         <br /><br />
-        <h1>Registro de dispositivos: </h1>
+        <h1>Registro de peliculas: </h1>
         <h:form id="formComputadora">
             <p:dataTable value="#{computadoraBeans.listaComputadoras}" var="computadora"
                          emptyMessage="No hay registros" paginator="true"
@@ -39,19 +40,19 @@
                 <p:column headerText="ID cliente">
                     <p:outputLabel value="#{computadoraBeans.contador}" />
                 </p:column>
-                <p:column headerText="Tipo">
+                <p:column headerText="Doblaje">
                     <p:outputLabel value="#{computadora.tipo}" />
                 </p:column>
-                <p:column headerText="Marca">
+                <p:column headerText="Genero">
                     <p:outputLabel value="#{computadora.marca}" />
                 </p:column>
-                <p:column headerText="Modelo">
+                <p:column headerText="Pelicula">
                     <p:outputLabel value="#{computadora.modelo}" />
                 </p:column>
-                <p:column headerText="Descripcion">
+                <p:column headerText="Director">
                     <p:outputLabel value="#{computadora.descripcion}" />
                 </p:column>
-                <p:column headerText="Costo">
+                <p:column headerText="Costo de boleto">
                     <p:outputLabel value="$#{computadora.costo}" />
                 </p:column>
                 <p:column headerText="Modificar">
@@ -84,20 +85,20 @@
                       resizable="true" minWidth="200" >
                 <h:inputHidden value="#{computadoraBeans.computadora.idComputadora}"/>
                 <p:panelGrid columns="2">
-                    <p:outputLabel value="Marca: "/>
+                    <p:outputLabel value="Pelicula "/>
                     <p:inputText value="#{computadoraBeans.computadora.marca}">
                         <f:validator validatorId="models.ValidadorLetras"/>
                     </p:inputText>
-                    <p:outputLabel value="Modelo: "/>
+                    <p:outputLabel value="Genero "/>
                     <p:inputText value="#{computadoraBeans.computadora.modelo}"/>
-                    <p:outputLabel value="TIpo: "/>
+                    <p:outputLabel value="Doblaje "/>
                     <p:selectOneRadio value="#{computadoraBeans.computadora.tipo}">
-                        <f:selectItem itemValue="pc" itemLabel="PC"/>
-                        <f:selectItem itemValue="laptop" itemLabel="Laptop"/>
+                        <f:selectItem itemValue="Espanol" itemLabel="Espanol"/>
+                        <f:selectItem itemValue="Ingles" itemLabel="Ingles"/>
                     </p:selectOneRadio>
-                    <p:outputLabel value="descripcion: "/>
+                    <p:outputLabel value="Director "/>
                     <p:inputText value="#{computadoraBeans.computadora.descripcion}" />
-                    <p:outputLabel value="Costo "/>
+                    <p:outputLabel value="Costo de boleto "/>
                     <p:inputText value="#{computadoraBeans.computadora.costo}"/>
                 </p:panelGrid>
                 <p:commandButton value="Guardar Cambios" actionListener="#{computadoraBeans.modificar()}"
@@ -105,5 +106,6 @@
             </p:dialog>
         </h:form>
     </h:body>
+    </center>
 </html>
 

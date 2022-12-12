@@ -3,6 +3,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import models.Computadoras;
 import models.Usuarios;
+import util.DataConnect;
 
 public class ConexionDao {
     Connection con;
@@ -107,6 +109,31 @@ public class ConexionDao {
             System.out.println("Datos no eliminado: "+err);
         }
         desconectar();
+    }
+    
+    /*Consultar*/
+    public static boolean validate(String user, String password) throws SQLException{
+        Connection con = null;
+        PreparedStatement ps = null;
+        try{
+            con = DataConnect.getConnection();
+            String sql ="select email, contraseña from usuario where email = ? and contraseña = ?";
+            ps=con.prepareStatement(sql);
+            ps.setString(1, user);
+            ps.setString(2, password);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                return true;
+            }
+        }catch (SQLException ex){
+            System.out.println("Login error: "+ex.getMessage());
+            return false;
+        }finally{
+            DataConnect.close(con);
+        }
+        return false;
     }
     
     

@@ -7,16 +7,59 @@
     <h:head>
         <title>Facelet Title</title>
     </h:head>
-    <h:body>
-        <h1>Bienvenido: </h1>
+    <center>
         
-        <h:form>
-            <p:commandButton value="Registrarse" action="registro.xhtml"/>
-            <br  /><br  />
-            <p:commandButton value="Iniciar Sesión" action="home.xhtml"/>
-            
+        <h:body style="background-color: pink">
+        
+         <h:form class="formulario" >
+             <h2 style="color: magenta" class="crea-cuenta">Crea una cuenta</h2>
+            <h:outputText class="txt" value="Correo" />
+            <h:inputText class="imput" id="username" value="#{login.user}"></h:inputText>
+            <h:message for="username"></h:message>
+            <br>
 
+            <h:outputText class="txt" value="Password" />
+            <h:inputSecret id="password" value="#{login.pwd}"></h:inputSecret>
+            <h:message for="password"></h:message>
+            </br>
+
+            <h:commandButton  class="btnn" action="#{login.validateUsernamePassword}"
+			value="Inciar Sesion">
+                        <f:ajax render="@form" execute="@form" />
+            </h:commandButton>
+            <br  /><br  />
+            <h:outputText value="#{login.msg}" style="color:red" />
         </h:form>
+  
+                <h:form id="formNuevoUsuario">
+                    <h2>Crea una cuenta</h2>
+                    
+                <p:outputLabel value="Nombre: "/>
+                <p:inputText value="#{usuarioBeans.usuario.nombre}" required="true">
+                    <f:validator validatorId="models.ValidadorLetras"/>
+                </p:inputText>
+                <p:outputLabel value="Apellidos: "/>
+                <p:inputText value="#{usuarioBeans.usuario.apellido}" required="true">
+                    <f:validator validatorId="models.ValidadorLetras"/>
+                </p:inputText>
+                <p:outputLabel value="Sexo: "/>
+                <p:selectOneRadio  class="sexo" value="#{usuarioBeans.usuario.sexo}" required="true">
+                    <f:selectItem  class="sexo" itemValue="hombre" itemLabel="Masculino"/>
+                    <f:selectItem class="sexo" itemValue="mujer" itemLabel="Femenino"/>
+                </p:selectOneRadio>
+                <p:outputLabel value="Correo: "/>
+                <p:inputText value="#{usuarioBeans.usuario.email}" required="true">
+                    <f:validator validatorId="models.ValidadorEmail"/>
+                </p:inputText>
+                <p:outputLabel value="Contraseña: "/>
+                <p:inputText value="#{usuarioBeans.usuario.contraseña}" required="true"/>
+                
+                    
+                    <p:commandButton class="btn" value="Registrar" action="#{usuarioBeans.insertar()}" update="formNuevoUsuario"/>
+
+                </h:form>
+        
     </h:body>
+        </center>
 </html>
 
